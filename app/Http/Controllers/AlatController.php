@@ -30,23 +30,27 @@ class AlatController extends Controller
         return redirect()->route('alat.index');
     }
 
-    public function show(Alat $alat)
-    {
-        //
-    }
-
     public function edit(Alat $alat)
     {
-        //
+        return view('alat.edit', compact('alat'));
     }
 
     public function update(Request $request, Alat $alat)
     {
-        //
+        $alat->update([
+            'nama_alat' => $request->nama_alat,
+            'kategori' => $request->kategori,
+            'jumlah' => $request->jumlah,
+            'kondisi' => $request->kondisi,
+        ]);
+
+        return redirect()->route('alat.index');
     }
 
     public function destroy(Alat $alat)
     {
-        //
+        $alat->delete();
+
+        return redirect()->route('alat.index');
     }
 }

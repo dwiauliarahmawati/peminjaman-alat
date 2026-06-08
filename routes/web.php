@@ -18,17 +18,11 @@ Route::get('/login', function () {
 
 Route::post('/login', function (Request $request) {
 
-    if (
-        $request->email == 'admin@gmail.com' &&
-        $request->password == '123456'
-    ) {
-        session(['login' => true]);
+    session(['login' => true]);
 
-        return redirect('/alat');
-    }
-
-    return back()->with('error', 'Email atau Password salah');
+    return redirect('/alat');
 });
+
 
 Route::get('/logout', function () {
     session()->forget('login');

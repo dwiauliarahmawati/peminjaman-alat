@@ -11,10 +11,10 @@
 
 <table border="1">
     <tr>
-       
         <th>Nama Siswa</th>
         <th>Kelas</th>
         <th>Jurusan</th>
+        <th>Aksi</th>
     </tr>
 
     @foreach($siswa as $s)
@@ -22,6 +22,17 @@
         <td>{{ $s->nama_siswa }}</td>
         <td>{{ $s->kelas }}</td>
         <td>{{ $s->jurusan }}</td>
+        <td>
+            <!-- EDIT -->
+            <a href="{{ route('siswa.edit', $s->id) }}">Edit</a>
+
+            <!-- DELETE -->
+            <form action="{{ route('siswa.destroy', $s->id) }}" method="POST" style="display:inline;">
+                @csrf
+                @method('DELETE')
+                <button type="submit" onclick="return confirm('Yakin hapus?')">Hapus</button>
+            </form>
+        </td>
     </tr>
     @endforeach
 

@@ -3,8 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Siswa;
-use App\Models\Alat;
 
 class Peminjaman extends Model
 {
@@ -19,13 +17,21 @@ class Peminjaman extends Model
         'status'
     ];
 
+    // relasi ke siswa
     public function siswa()
     {
-        return $this->belongsTo(Siswa::class);
+        return $this->belongsTo(Siswa::class, 'siswa_id');
     }
 
+    // relasi ke alat
     public function alat()
     {
-        return $this->belongsTo(Alat::class);
+        return $this->belongsTo(Alat::class, 'alat_id');
+    }
+
+    // relasi ke pengembalian
+    public function pengembalian()
+    {
+        return $this->hasOne(Pengembalian::class);
     }
 }

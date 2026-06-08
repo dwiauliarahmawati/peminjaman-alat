@@ -35,4 +35,33 @@ class PeminjamanController extends Controller
 
         return redirect()->route('peminjaman.index');
     }
+
+    public function edit(Peminjaman $peminjaman)
+    {
+        $siswa = Siswa::all();
+        $alat = Alat::all();
+
+        return view('peminjaman.edit', compact('peminjaman','siswa','alat'));
+    }
+
+    public function update(Request $request, Peminjaman $peminjaman)
+    {
+        $peminjaman->update([
+            'user_id' => 1,
+            'siswa_id' => $request->siswa_id,
+            'alat_id' => $request->alat_id,
+            'tanggal_pinjam' => $request->tanggal_pinjam,
+            'jumlah_pinjam' => $request->jumlah_pinjam,
+            'status' => $request->status,
+        ]);
+
+        return redirect()->route('peminjaman.index');
+    }
+
+    public function destroy(Peminjaman $peminjaman)
+    {
+        $peminjaman->delete();
+
+        return redirect()->route('peminjaman.index');
+    }
 }

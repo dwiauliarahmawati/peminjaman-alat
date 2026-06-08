@@ -15,9 +15,9 @@ class Pengembalian extends Model
         'kondisi_kembali'
     ];
 
-    // 🔥 TAMBAHAN PENTING INI
+    // relasi ke peminjaman
     public function peminjaman()
     {
-        return $this->belongsTo(\App\Models\Peminjaman::class, 'peminjaman_id');
+        return $this->belongsTo(Peminjaman::class, 'peminjaman_id');
     }
 }

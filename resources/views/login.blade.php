@@ -1,29 +1,70 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login Admin</title>
+    <title>Login</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .box {
+            width: 300px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input,
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 
-<h2>Login Sistem Peminjaman Alat Sekolah</h2>
+<div class="box">
 
-@if(session('error'))
-<p style="color:red">
-    {{ session('error') }}
-</p>
-@endif
+    <h2>Login</h2>
 
-<form action="/login" method="POST">
-    @csrf
+    <form method="POST" action="/login">
+        @csrf
 
-    <label>Email</label><br>
-    <input type="email" name="email"><br><br>
+        <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            required
+        >
 
-    <label>Password</label><br>
-    <input type="password" name="password"><br><br>
+        <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+        >
 
-    <button type="submit">Login</button>
-</form>
+        <button type="submit">
+            Login
+        </button>
+
+    </form>
+
+</div>
 
 </body>
 </html>

@@ -23,7 +23,7 @@
     <div>
         <label>Nama Alat</label><br>
         <select name="alat_id" required>
-            <option value="">-- pilih alat --</option>
+            <option value="">Pilih alat</option>
 
             @foreach($alat as $a)
                 <option value="{{ $a->id }}">
